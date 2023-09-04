@@ -1,20 +1,18 @@
-
+import { Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
-import History from "./Components/History";
-import Links from "./Components/Navbar";
-import { Routes, Route } from "react-router-dom";
+import HistoryPage from "./Components/HistoryPage";
+import ShowData from "./Components/ShowData";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Links />
+    <>
       <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/history" element={<History />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/:word" element={<ShowData  />} />
+        <Route path="/history" element={<HistoryPage />} />
       </Routes>
-
-    </div>
+    </>
   );
-}
+};
 
 export default App;

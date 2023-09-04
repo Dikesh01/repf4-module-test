@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
-const Navbar = ()=>{
+const Navbar = () => {
+  return (
+    <div className="navbarCls">
+      <div className="">
+        <h3>Dictionary App</h3>
+      </div>
+      <div className="linkCls">
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/history">History</NavLink>
+      </div>
+    </div>
+  );
+};
 
-    return(
-        <div className="navbar">
-            <h3>Dictionary App</h3>
-            <div className="links">
-                <a href="/">Home</a>
-                <a href="/history">History</a>
-            </div>
-            
-        </div>
-    )
-}
 export default Navbar;

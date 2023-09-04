@@ -1,87 +1,82 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useContext, useEffect } from "react";
+
+import Navbar from "./Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import { postFetching, postFetchSuccess, postFetchError } from "../redux/actions/postActions";
-import { getAPIDetails } from "../redux/actions/postActions";
+import getFetchData from "../redux/actions/getAction";
+import { useState } from "react";
+import HistoryContext from "../context/HistoryContext";
 
-const Home = ()=>{
+const Home = () => {
+  const { history, setHistory } = useContext(HistoryContext);
+  const [input, setInput] = useState("");
 
-    const [word, setWord] = useState("")
-    let {loading, data, error} = useSelector((state)=>state)
-    console.log({loading, data, error})
+  const dispatch = useDispatch();
+  const { loading, data, error } = useSelector((state) => state);
 
+  // useEffect(() => {
+  //   console.log("data changed")
+  //   if (data.length !== 0) {
+  //     setHistory([...history, data]);
+  //   }
+  // }, [data]);
 
-    let dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getFetchData("sun"));
+  // }, [dispatch]);
 
-    const getWordDetail = ()=>{
-
-        // dispatch(postFetching());
-
-        // axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-        // .then((response) => {
-        //     dispatch(postFetchSuccess(response.data))
-        // })
-        // .catch((error)=>{
-        //     dispatch(postFetchError(error.message))
-        // })
-        dispatch(getAPIDetails(word))
-    }
-
-
-    return(
-        <div >
-           <div className="homeClass">
-                <input type="text" placeholder="Search for word..." 
-                    onChange={(event)=>setWord(event.target.value)}/>
-                <button onClick={getWordDetail}>Search</button>
-           </div>
-
-           <div className="wordDetails_Class">
-            {
-                data && 
-                    data.map((item, index)=>{
-                        return(
-                            <div className="word_details">
-                                <h2>{item.word}</h2>
-                                <p>{item.phonetic}</p>
-                                <audio controls >
-                                    <source src={item.phonetics[0].audio}/>
-                                </audio>
-                                <p>{item.phonetic}</p>
-                                <audio controls >
-                                    <source src={item.phonetics[0].audio}/>
-                                </audio>
-                                {/* <h3>noun</h3> */}
-
-                                {item.meanings && 
-                                    item.meanings.map((meaning,index)=>{
-                                        return(
-                                            <div>
-                                                <h3>{meaning.partOfSpeech}</h3>
-                                                    {
-                                                        meaning.definitions &&
-                                                            meaning.definitions.map((define,index)=>{
-                                                                return(
-                                                                    <div>
-                                                                        <p>{define.definition}</p>
-                                                                    </div>
-                                                                )
-                                                            })
-                                                    }
-                                            </div>
-                                        )
-                                    })
-                                /* <p>{item.meanings[0].definitions[0].definition}</p>
-                                <p>{item.meanings[0].definitions[1].definition}</p> */}
-                                {/* <p>{item.meanings[0].partOfSpeech}</p> */}
-                                {/* <p>{item.meanings[1].definitions[1].definition}</p>
-                                <p>{item.meanings[1].definitions[2].definition}</p> */}
-                            </div>
-                        )
-                    })
-            }
-           </div>
+  return (
+    <>
+      <Navbar />
+      <div className="searchCls">
+        <div>
+          <input
+            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            type="text"
+            placeholder="Search for word..."
+            onChange={(e) => setInput(e.target.value)}
+          />
         </div>
-    )
-}
+        <div>
+        <button
+          className=""
+          onClick={() => {
+            dispatch(getFetchData(input));
+            setHistory([...history, input]);
+          }}
+        >
+          Search
+        </button>
+
+        </div>
+
+      </div>
+      <div className="details_margin">
+        {data &&
+          data.map((data, idx) => (
+            <div className="wordDetails_cla" key={idx}>
+              <h2>{data.word}</h2>
+
+              {/* audio section */}
+              {data.phonetics.map((phonetic, idx) => (
+                <React.Fragment key={idx}>
+                  <p>{phonetic.text}</p>
+
+                  <audio controls>
+                    <source src={phonetic.audio} type="audio/mp3" />
+                  </audio>
+                </React.Fragment>
+              ))}
+              {data.meanings.map((data, idx) => (
+                <React.Fragment key={idx}>
+                  <p>{data.partOfSpeech}</p>
+                  <p>{data.definitions[0].definition}</p>
+                </React.Fragment>
+              ))}
+            </div>
+          ))}
+      </div>
+    </>
+  );
+};
+
 export default Home;

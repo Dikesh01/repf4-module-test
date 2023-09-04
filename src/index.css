@@ -1,43 +1,43 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 
 *{
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  text-decoration: none;
 }
 
 body{
   background-color: #d7e0e2;
-}
-
-
-.navbar{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
-  height: 50px;
-  background-color: #000000;
   color: #ffffff;
 }
 
-.navbar > .links{
+.navbarCls{
+  background-color: #000000;
+  height: 50px;
   display: flex;
-  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
 }
 
-.links a{
-  color: white;
+.navbarCls .linkCls{
+  display: flex;
+  gap: 20px;
+ 
+}
+
+.linkCls NavLink{
   text-decoration: none;
 }
 
-.homeClass{
+.searchCls{
   margin-top: 25px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
-.homeClass > input{
+.searchCls input{
   height: 26px;
   width: 220px;
   border-radius: 3px;
@@ -45,12 +45,12 @@ body{
   padding-left: 10px;
 }
 
-.homeClass > input:focus{
+.searchCls input:focus{
   outline:#000000;
   border: 2px solid blue;
 }
 
-.homeClass > button{
+.searchCls button{
   background-color: #000000;
   color: #b9afaf;
   height: 28px;
@@ -60,14 +60,40 @@ body{
   border-radius: 0 3px 3px 0;
 }
 
-.wordDetails_Class{
+.details_margin{
   margin-top: 30px;
-  background-color: #ffffff;
-  border-radius: 10px;
 }
 
-.wordDetails_Class .word_details{
+.wordDetails_cla{
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 10px;
   padding: 20px;
   box-shadow: 1px 4px 5px 1px rgb(165, 162, 162);
+  margin-bottom: 10px;
+}
 
+.history_class{
+  background-color: #ffffff;
+  margin-top: 10px;
+  padding: 20px;
+  color: #000000;
+}
+
+.history_class h2{
+  margin-bottom: 10px;
+}
+
+.ulClass{
+  list-style: none;
+  text-decoration: none;
+}
+
+.showData_cls{
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 1px 4px 5px 1px rgb(165, 162, 162);
+  margin-bottom: 10px;
 }
