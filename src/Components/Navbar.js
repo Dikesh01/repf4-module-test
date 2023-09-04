@@ -8,8 +8,12 @@ const Navbar = () => {
         <h3>Dictionary App</h3>
       </div>
       <div className="linkCls">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/history">History</NavLink>
+        <NavLink to="/" style={{ color: "#e9dede", fontSize:"14px" }}>
+          Home
+        </NavLink>
+        <NavLink to="/history" style={{ color: "#e9dede", fontSize:"14px" }}>
+          History
+        </NavLink>
       </div>
     </div>
   );

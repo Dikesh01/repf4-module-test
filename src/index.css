@@ -19,16 +19,21 @@ body{
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
+  color: #ffffff;
+
 }
 
 .navbarCls .linkCls{
   display: flex;
   gap: 20px;
+  color: #ffffff;
  
 }
 
 .linkCls NavLink{
-  text-decoration: none;
+  /* text-decoration: none; */
+  color: #e9dede;
+  text-decoration: underline;
 }
 
 .searchCls{
@@ -78,6 +83,8 @@ body{
   margin-top: 10px;
   padding: 20px;
   color: #000000;
+  border-radius: 10px;
+  box-shadow: 1px 4px 5px 1px rgb(165, 162, 162);
 }
 
 .history_class h2{

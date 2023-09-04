@@ -37,18 +37,16 @@ const Home = () => {
           />
         </div>
         <div>
-        <button
-          className=""
-          onClick={() => {
-            dispatch(getFetchData(input));
-            setHistory([...history, input]);
-          }}
-        >
-          Search
-        </button>
-
+          <button
+            className=""
+            onClick={() => {
+              dispatch(getFetchData(input));
+              setHistory([...history, input]);
+            }}
+          >
+            Search
+          </button>
         </div>
-
       </div>
       <div className="details_margin">
         {data &&

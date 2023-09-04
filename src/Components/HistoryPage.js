@@ -14,13 +14,13 @@ const HistoryPage = () => {
           history.map((search, idx) => (
             <ul className="ulClass">
               <li>
-              <Link
-              to={`/${search}`}
-              key={idx}
-              className="underline mx-4 my-2 text-blue-700 w-min"
-            >
-              {search}
-            </Link>
+                <Link
+                  to={`/${search}`}
+                  key={idx}
+                  className="underline mx-4 my-2 text-blue-700 w-min"
+                >
+                  {search}
+                </Link>
               </li>
             </ul>
           ))}
